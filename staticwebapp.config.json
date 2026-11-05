@@ -2,11 +2,11 @@
   "routes": [
     {
       "route": "/admin.html",
-      "allowedRoles": ["admin"]
+      "allowedRoles": ["authenticated"]
     },
     {
       "route": "/admin.js",
-      "allowedRoles": ["admin"]
+      "allowedRoles": ["authenticated"]
     }
   ],
   "responseOverrides": {
