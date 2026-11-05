@@ -1,0 +1,56 @@
+[
+  {
+    "id": "home-renovation-inspiration",
+    "title": "A calmer living space",
+    "category": "Home renovation",
+    "description": "Design inspiration. Replace this sample with a photo of your completed home renovation.",
+    "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
+    "alt": "Bright, renovated living room with warm natural finishes",
+    "placeholder": true
+  },
+  {
+    "id": "office-renovation-inspiration",
+    "title": "A more welcoming workplace",
+    "category": "Office renovation",
+    "description": "Design inspiration. Replace this sample with a photo of your completed office renovation.",
+    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
+    "alt": "Light-filled modern office with collaborative work tables",
+    "placeholder": true
+  },
+  {
+    "id": "office-design-inspiration",
+    "title": "Thoughtful office interiors",
+    "category": "Office design",
+    "description": "Design inspiration. Replace this sample with a photo of your office interior design project.",
+    "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+    "alt": "Contemporary office interior with desks and plants",
+    "placeholder": true
+  },
+  {
+    "id": "flooring-inspiration",
+    "title": "Warmth underfoot",
+    "category": "Flooring",
+    "description": "Design inspiration. Replace this sample with a photo of your flooring installation.",
+    "image": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85",
+    "alt": "Comfortable interior with warm wood flooring",
+    "placeholder": true
+  },
+  {
+    "id": "home-repair-inspiration",
+    "title": "Details that make a difference",
+    "category": "Repairs",
+    "description": "Design inspiration. Replace this sample with a photo of a completed home repair or improvement.",
+    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
+    "alt": "Refreshed room with clean, light finishes",
+    "placeholder": true
+  },
+  {
+    "id": "construction-inspiration",
+    "title": "Building for what comes next",
+    "category": "Construction",
+    "description": "Design inspiration. Replace this sample with a photo of a completed construction project.",
+    "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85",
+    "alt": "Contemporary home exterior with natural materials",
+    "placeholder": true
+  }
+]
