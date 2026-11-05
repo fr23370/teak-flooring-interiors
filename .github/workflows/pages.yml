@@ -35,6 +35,12 @@ jobs:
           cp -R data _site/data
           if [ -d images ]; then cp -R images _site/images; fi
           touch _site/.nojekyll
+          for path in admin.html admin.js staticwebapp.config.json; do
+            if [ -e "_site/$path" ]; then
+              echo "Private admin file must not be published: $path" >&2
+              exit 1
+            fi
+          done
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
