@@ -44,6 +44,14 @@ a:focus-visible {
     outline-offset: 5px;
 }
 
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+outline: 2px solid var(--brand-blue);
+outline-offset: 3px;
+}
+
 .skip-link {
     position: absolute;
     top: -50px;
@@ -119,6 +127,12 @@ a:focus-visible {
     align-items: center;
     gap: 34px;
     font-size: 12px;
+}
+
+.main-nav > a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .main-nav > a:not(.nav-cta),
@@ -348,6 +362,13 @@ h2 em {
     isolation: isolate;
     overflow: hidden;
     transition: transform 800ms ease, box-shadow 800ms ease, filter 800ms ease;
+}
+
+.hero-image,
+.collection-photo,
+.feature-image {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 560px;
 }
 
 .hero-image::before {
@@ -635,6 +656,7 @@ h2 em {
 }
 
 .project-filter {
+    min-height: 44px;
     padding: 9px 14px;
     border: 1px solid var(--line);
     border-radius: 99px;
@@ -809,8 +831,13 @@ h2 em {
     padding-top: 119px;
     padding-bottom: 126px;
     display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 10%;
+}
+
+.services-heading,
+.service-list {
+    min-width: 0;
 }
 
 .services h2 {
@@ -918,9 +945,30 @@ h2 em {
     margin-top: 23px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px 20px;
     color: var(--ink);
     font-size: 11px;
+}
+
+.contact-details a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    overflow-wrap: anywhere;
+}
+
+.contact-options-heading {
+    width: 100%;
+    margin: 0;
+    color: var(--brand-blue);
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+#contact-options {
+    scroll-margin-top: 150px;
 }
 
 .contact-details a:hover,
@@ -996,6 +1044,18 @@ h2 em {
 
 .back-to-top {
     justify-self: end;
+}
+
+.back-to-top,
+.footer-contact a,
+.gallery-admin-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-contact a {
+    overflow-wrap: anywhere;
 }
 
 .copyright {
@@ -1276,6 +1336,8 @@ h2 em {
 }
 
 .admin-project-actions button {
+    min-width: 44px;
+    min-height: 44px;
     padding: 0;
     border: 0;
     background: transparent;
@@ -1430,14 +1492,25 @@ h2 em {
     .main-nav {
         width: 100%;
         padding-bottom: 3px;
-        gap: 20px;
-        overflow-x: auto;
-        white-space: nowrap;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: 4px 12px;
+        overflow: visible;
+        white-space: normal;
         font-size: 11px;
     }
 
+    .main-nav > a {
+        min-height: 44px;
+        padding: 5px 3px;
+    }
+
     .nav-cta {
-        padding: 7px 10px;
+        padding: 7px 10px !important;
+    }
+
+    #contact-options {
+        scroll-margin-top: 190px;
     }
 
     .hero {
@@ -1570,7 +1643,7 @@ h2 em {
     }
 
     .feature {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .feature-image {
@@ -1588,7 +1661,7 @@ h2 em {
     .services {
         padding-top: 82px;
         padding-bottom: 88px;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 35px;
     }
 
@@ -1598,7 +1671,7 @@ h2 em {
     }
 
     .service-item {
-        grid-template-columns: 28px 1fr 20px;
+        grid-template-columns: 28px minmax(0, 1fr) 20px;
         gap: 8px;
     }
 
@@ -1651,6 +1724,54 @@ h2 em {
     }
 }
 
+@media (max-width: 420px) {
+    .hero h1 {
+        font-size: clamp(52px, 15vw, 64px);
+    }
+
+    .hero-actions {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .project-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project-card-copy {
+        min-height: 0;
+        padding: 16px 5px 20px;
+    }
+
+    .project-card-copy h3 {
+        font-size: 21px;
+    }
+
+    .project-card-copy > p:last-child {
+        font-size: 12px;
+    }
+
+    .contact-details {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .contact-options-heading {
+        margin-bottom: 5px;
+    }
+
+    .site-footer {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .back-to-top {
+        grid-column: 1;
+        justify-self: start;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -1660,5 +1781,7 @@ h2 em {
     *::before,
     *::after {
         transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }
