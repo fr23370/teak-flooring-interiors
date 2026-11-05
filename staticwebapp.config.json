@@ -1,0 +1,22 @@
+{
+  "routes": [
+    {
+      "route": "/admin.html",
+      "allowedRoles": ["admin"]
+    },
+    {
+      "route": "/admin.js",
+      "allowedRoles": ["admin"]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/github?post_login_redirect_uri=.referrer",
+      "statusCode": 302
+    },
+    "403": {
+      "rewrite": "/index.html",
+      "statusCode": 404
+    }
+  }
+}

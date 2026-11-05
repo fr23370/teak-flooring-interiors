@@ -1047,8 +1047,7 @@ h2 em {
 }
 
 .back-to-top,
-.footer-contact a,
-.gallery-admin-link {
+.footer-contact a {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
@@ -1064,19 +1063,6 @@ h2 em {
     padding-top: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.16);
     font-size: 9px;
-}
-
-.gallery-admin-link {
-    grid-column: 1;
-    grid-row: 3;
-    justify-self: start;
-    margin-top: 7px;
-    color: var(--muted);
-    font-size: 9px;
-}
-
-.gallery-admin-link:hover {
-    color: var(--paper);
 }
 
 .admin-page {
@@ -1139,8 +1125,7 @@ h2 em {
     font-weight: 500;
 }
 
-.admin-panel > p,
-.admin-login > p {
+.admin-panel > p {
     color: var(--muted);
     font-size: 12px;
 }
@@ -1200,18 +1185,6 @@ h2 em {
 .admin-form textarea:focus-visible {
     outline: 2px solid var(--olive);
     outline-offset: 2px;
-}
-
-.admin-login {
-    max-width: 420px;
-}
-
-.admin-login .button {
-    justify-self: start;
-    margin-top: 4px;
-    border: 0;
-    cursor: pointer;
-    font: inherit;
 }
 
 .admin-fields {
@@ -1701,10 +1674,6 @@ h2 em {
 
     .back-to-top {
         grid-column: 2;
-    }
-
-    .gallery-admin-link {
-        grid-row: auto;
     }
 
     .admin-page {
