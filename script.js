@@ -1,57 +1,86 @@
 const heroVisual = document.getElementById('heroVisual');
 const slideIndex = document.getElementById('slideIndex');
 const slideTitle = document.getElementById('slideTitle');
+const slidePrevious = document.querySelector('[data-slide-previous]');
+const slideNext = document.querySelector('[data-slide-next]');
+const slideToggle = document.querySelector('[data-slide-toggle]');
 
 const slides = [
   {
     image: "url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85')",
-    label: 'A warm, thoughtfully renovated living space',
-    number: '01 / 04'
+    label: 'A warm, thoughtfully renovated living space'
   },
   {
     image: "url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85')",
-    label: 'Considered finishes for a welcoming home',
-    number: '02 / 04'
+    label: 'Considered finishes for a welcoming home'
   },
   {
     image: "url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85')",
-    label: 'Bright spaces, carefully refreshed',
-    number: '03 / 04'
+    label: 'Bright spaces, carefully refreshed'
   },
   {
     image: "url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85')",
-    label: 'Interior details made to feel at home',
-    number: '04 / 04'
+    label: 'Interior details made to feel at home'
   },
   {
     image: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=85')",
-    label: 'A considered, light-filled office interior',
-    number: '05 / 05'
+    label: 'A considered, light-filled office interior'
   }
 ];
 
 let slidePosition = 0;
+let slideTimer;
+let slideshowPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function renderSlide(index) {
   if (!heroVisual || !slideIndex || !slideTitle) return;
 
-  const current = slides[index];
+  slidePosition = (index + slides.length) % slides.length;
+  const current = slides[slidePosition];
   heroVisual.style.backgroundImage = `linear-gradient(180deg, transparent 68%, rgba(41, 39, 42, 0.42)), ${current.image}`;
   heroVisual.setAttribute('aria-label', current.label);
-  slideIndex.textContent = current.number;
+  slideIndex.textContent = `${String(slidePosition + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
   slideTitle.textContent = current.label;
 }
 
 function nextSlide() {
-  slidePosition = (slidePosition + 1) % slides.length;
-  renderSlide(slidePosition);
+  renderSlide(slidePosition + 1);
 }
 
-if (heroVisual) {
+function updateSlideshow() {
+  if (!slideToggle) return;
+  const label = slideshowPaused ? 'Resume slideshow' : 'Pause slideshow';
+  slideToggle.setAttribute('aria-label', label);
+  slideToggle.setAttribute('title', label);
+  slideToggle.setAttribute('aria-pressed', String(slideshowPaused));
+  slideToggle.innerHTML = slideshowPaused ? '&#9654;' : '&#10074;&#10074;';
+}
+
+function startSlideshow() {
+  clearInterval(slideTimer);
+  slideTimer = undefined;
+  if (slideshowPaused || document.hidden || !heroVisual) return;
+  slideTimer = setInterval(nextSlide, 5000);
+}
+
+if (heroVisual && slideIndex && slideTitle) {
   renderSlide(slidePosition);
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    setInterval(nextSlide, 5000);
-  }
+  slidePrevious?.addEventListener('click', () => {
+    renderSlide(slidePosition - 1);
+    startSlideshow();
+  });
+  slideNext?.addEventListener('click', () => {
+    nextSlide();
+    startSlideshow();
+  });
+  slideToggle?.addEventListener('click', () => {
+    slideshowPaused = !slideshowPaused;
+    updateSlideshow();
+    startSlideshow();
+  });
+  document.addEventListener('visibilitychange', startSlideshow);
+  updateSlideshow();
+  startSlideshow();
 }
 
 const header = document.querySelector('.site-header');
