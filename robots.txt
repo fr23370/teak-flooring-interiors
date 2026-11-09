@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://teakflooringinteriors.com/sitemap.xml
+Sitemap: https://fr23370.github.io/teak-flooring-interiors/sitemap.xml
